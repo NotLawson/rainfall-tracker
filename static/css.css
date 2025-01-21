@@ -1,6 +1,14 @@
-a, p, h1, h2, li {
+p, h1, h2, li {
     font-family: sans-serif;
     color: white;
+}
+a {
+    font-family: sans-serif;
+    color: rgb(205, 205, 205)
+}
+a:hover {
+    font-family: sans-serif;
+    color:rgb(105, 105, 105)
 }
 body {
     background-color: rgb(117, 117, 117);
