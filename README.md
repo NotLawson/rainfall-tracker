@@ -6,8 +6,11 @@ It consists of 2 parts:
 - Main Python Script: Runs on the NAS, provides webpage and logs data in the database
 - Database Python Script: Manages the database using a JSON file
 
-![A screenshot of the year view](docs/year.png.png "Year View")
-![A screenshot of the month view](docs/month.png.png "Month View")
+### Year View
+![A screenshot of the year view](docs/year.png "Year View")
+
+### Month View
+![A screenshot of the month view](docs/month.png "Month View")
 
 ## Quick start
 
