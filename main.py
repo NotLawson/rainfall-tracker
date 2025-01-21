@@ -17,7 +17,7 @@ def day(month, day):
         rainfall = float(request.form.get("rainfall"))
         try:
             current_year.put(month, int(day), rainfall)
-            return redirect("/"+month)
+            return redirect("/month/"+month)
         except IndexError:
             return render_template("day_not_found.html", data={
                 "day":day,
