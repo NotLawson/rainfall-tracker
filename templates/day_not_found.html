@@ -1,5 +1,11 @@
 <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Error</title>
+    </head>
     <body>
-        <h1>womp womp day not found</h1>
+        <h1>The day {{data["day"]}}/{{data["month"]}} cannot be edited because {{int(data["day"])-1}}/{{data["month"}} hasn't been added</h1>
+        <h2><a href="/day/{{data['month']}}/{{int(data['day'])-1}}">Go to the day before</a></h2>
+        <h2><a href="/">Go home</a></h2>
     </body>
 </html>

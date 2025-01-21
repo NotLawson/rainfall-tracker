@@ -24,7 +24,7 @@ def day(month, day):
             return render_template("day_not_found.html", data={
                 "day":day,
                 "month":month,
-            })
+            }, int=int)
     try: rainfall = current_year.get(month, int(day))
     except IndexError:
         rainfall = 0

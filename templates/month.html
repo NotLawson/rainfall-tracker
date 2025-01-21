@@ -1,4 +1,8 @@
 <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Month {{month}}</title>
+    </head>
     <body>
         <h1>Month {{month}}</h1>
         <p>Total Rainfall: {{data["total"]}}</p>
@@ -11,6 +15,7 @@
             {% set i.value = i.value + 1 %}
         {% endfor %}
             <li><a href="/day/{{month}}/{{i.value}}"><i>Create</i></a></li>
+        <br>
         <a href="/">Back</a>
     </body>
 </html>
