@@ -22,15 +22,15 @@
             <li><a href="/month/12">Dec</a> (Total: {{year.data("12")["total"]}})</li>
         </ul>
         <div style="height: 50vh; width: 50%;">
-            <canvas id="graph"></canvas>
+            <canvas id="yeargraph"></canvas>
         </div>
         <script>
-            const labels = {{ labels | tojson}};
+            const yearlabels = {{ labels | tojson}};
      
-            const data = {
-                labels: labels,
+            const yeardata = {
+                labels: yearlabels,
                 datasets: [{
-                    label: 'Rainfall this month',
+                    label: 'Rainfall this Year',
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     data: {{ data | tojson}},
@@ -39,12 +39,12 @@
      
             const config = {
                 type: 'line',
-                data: data,
+                data: yeardata,
                 options: { maintainAspectRatio: false }
             };
      
             const graph = new Chart(
-                document.getElementById('graph'),
+                document.getElementById('yeargraph'),
                 config
             );
      
