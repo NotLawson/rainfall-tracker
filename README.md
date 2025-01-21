@@ -6,8 +6,12 @@ It consists of 2 parts:
 - Main Python Script: Runs on the NAS, provides webpage and logs data in the database
 - Database Python Script: Manages the database using a JSON file
 
+![A screenshot of the year view](docs/year.png.png "Year View")
+![A screenshot of the month view](docs/month.png.png "Month View")
 
 ## Quick start
+
+> Want the run a demo? Go to the example branch to download some demo data
 
 Go to the latest [release](https://github.com/NotLawson/rainfall-tracker/releases) and download the source code.
 

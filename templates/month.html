@@ -9,7 +9,9 @@
         <h1>Month {{month}}</h1>
         <p>Total Rainfall: {{data["total"]}}</p>
         <p>Average Rainfall: {{data["avg"]}}</p>
-
+        <div style="height: 50vh; width: 100%;">
+            <canvas id="graph"></canvas>
+        </div>
         {% set i = namespace(value=1) %}
         <ol>
         {% for day in rainfall_current: %}
@@ -19,9 +21,6 @@
             <li><a href="/day/{{month}}/{{i.value}}"><i>Create</i></a></li>
         <br>
         <a href="/">Back</a>
-        <div style="height: 50vh; width: 100%;">
-            <canvas id="graph"></canvas>
-        </div>
         <script>
             const labels = {{ labels | tojson}};
      
