@@ -6,10 +6,6 @@ a {
     font-family: sans-serif;
     color: rgb(255, 50, 50)
 }
-a:hover {
-    font-family: sans-serif;
-    color:rgb(205, 205, 205)
-}
 body {
     background-color: rgb(205, 205, 205);
 }

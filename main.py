@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import db
 
 current_year = db.Year("2025")
@@ -17,11 +17,7 @@ def day(month, day):
         rainfall = float(request.form.get("rainfall"))
         try:
             current_year.put(month, int(day), rainfall)
-            return render_template("day.html", data = {
-                "day":day,
-                "month":month,
-                "rainfall":rainfall
-            })
+            return redirect("/"+month)
         except IndexError:
             return render_template("day_not_found.html", data={
                 "day":day,
