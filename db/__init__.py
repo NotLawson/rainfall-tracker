@@ -1,6 +1,6 @@
 import json, os
 
-cdir = os.path.dirname(os.path.realpath(__file__))+"\\db"
+cdir = os.path.dirname(os.path.realpath(__file__)
 
 class Year:
     def __init__(self, year):
