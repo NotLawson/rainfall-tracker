@@ -19,7 +19,7 @@ It will use the port `8080`, but can be easily changed in the code.
 
 - [ ] Finish documentation
 - [x] Add a configuration file
-- [ ] Add automatic data recording (e.g. from a local weather station via Home Assistant
+- [ ] Add automatic data recording (e.g. from a local weather station via Home Assistant)
 - [ ] Add CSV/Excel exporting of data
 - [ ] Record temperature and Humidity
 - [x] Allow mulitple years

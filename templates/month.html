@@ -12,7 +12,7 @@
 
         {% set i = namespace(value=1) %}
         <ol>
-        {% for day in rainfall_data: %}
+        {% for day in rainfall_current: %}
             <li><a href="/day/{{month}}/{{i.value}}">{{day}}</a></li>
             {% set i.value = i.value + 1 %}
         {% endfor %}
@@ -27,12 +27,80 @@
      
             const data = {
                 labels: labels,
-                datasets: [{
-                    label: 'Rainfall this month',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: {{ rainfall_data | tojson}},
-                }]
+                datasets: [
+                {
+                    label: 'Jan',
+                    backgroundColor: 'rgb(255, 0, 0)',
+                    borderColor: 'rgb(255, 0, 0)',
+                    data: {{ rainfall_data[0] | tojson}},
+                },
+                {
+                    label: 'Feb',
+                    backgroundColor: 'rgb(0, 255, 0)',
+                    borderColor: 'rgb(0, 255, 0)',
+                    data: {{ rainfall_data[1] | tojson}},
+                },
+                {
+                    label: 'Mar',
+                    backgroundColor: 'rgb(0, 0, 255)',
+                    borderColor: 'rgb(0, 0, 255)',
+                    data: {{ rainfall_data[2] | tojson}},
+                },
+                {
+                    label: 'Apr',
+                    backgroundColor: 'rgb(255, 255, 0)',
+                    borderColor: 'rgb(255, 255, 0)',
+                    data: {{ rainfall_data[3] | tojson}},
+                },
+                {
+                    label: 'May',
+                    backgroundColor: 'rgb(0, 255, 255)',
+                    borderColor: 'rgb(0, 255, 255)',
+                    data: {{ rainfall_data[4] | tojson}},
+                },
+                {
+                    label: 'Jun',
+                    backgroundColor: 'rgb(255, 0, 255)',
+                    borderColor: 'rgb(255, 0, 255)',
+                    data: {{ rainfall_data[5] | tojson}},
+                },
+                {
+                    label: 'Jul',
+                    backgroundColor: 'rgb(192, 192, 192)',
+                    borderColor: 'rgb(192, 192, 192)',
+                    data: {{ rainfall_data[6] | tojson}},
+                },
+                {
+                    label: 'Aug',
+                    backgroundColor: 'rgb(128, 128, 128)',
+                    borderColor: 'rgb(128, 128, 128)',
+                    data: {{ rainfall_data[7] | tojson}},
+                },
+                {
+                    label: 'Sep',
+                    backgroundColor: 'rgb(128, 0, 0)',
+                    borderColor: 'rgb(128, 0, 0)',
+                    data: {{ rainfall_data[8] | tojson}},
+                },
+                {
+                    label: 'Oct',
+                    backgroundColor: 'rgb(128, 128, 0)',
+                    borderColor: 'rgb(128, 128, 0)',
+                    data: {{ rainfall_data[9] | tojson}},
+                },
+                {
+                    label: 'Nov',
+                    backgroundColor: 'rgb(0, 128, 0)',
+                    borderColor: 'rgb(0, 128, 0)',
+                    data: {{ rainfall_data[10] | tojson}},
+                },
+                {
+                    label: 'Dec',
+                    backgroundColor: 'rgb(0, 128, 128)',
+                    borderColor: 'rgb(0, 128, 128)',
+                    data: {{ rainfall_data[11] | tojson}},
+                }
+            ]
             };
      
             const config = {

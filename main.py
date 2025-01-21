@@ -70,14 +70,11 @@ def day(month, day):
 def month(month):
     current_year, _ = year_selector(request)
     data = current_year.data(month)
-    rainfall_data = current_year.json[month][1:]
-    labels = []
-    i=1
-    for day in rainfall_data:
-        labels.append(str(i))
-        i+=1
+    rainfall_current = current_year.json[month][1:]
+    rainfall_data = [current_year.json["01"][1:], current_year.json["02"][1:], current_year.json["03"][1:], current_year.json["04"][1:], current_year.json["05"][1:], current_year.json["06"][1:], current_year.json["07"][1:], current_year.json["08"][1:], current_year.json["09"][1:], current_year.json["10"][1:], current_year.json["11"][1:], current_year.json["12"][1:]]
+    labels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
 
-    return render_template("month.html", data=data, rainfall_data=rainfall_data, month=month, labels=labels)
+    return render_template("month.html", data=data, rainfall_data=rainfall_data, month=month, labels=labels, rainfall_current=rainfall_current)
 
 @app.route("/load")
 def load():
