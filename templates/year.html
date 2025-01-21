@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Year Selector</title>
+        <link rel="stylesheet" href="static/css.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <h1>Year Selector</h1>
+        <form method="POST" action="/year">
+            <select name="years">
+            {% for year in years.keys() %}
+                <option value="{{year}}">{{year}}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Select">
+        </form>
+        <div style="height: 50vh; width: 100%;">
+            <canvas id="graph"></canvas>
+        </div>
+        <script>
+            const labels = {{ labels | tojson}};
+     
+            const data = {
+                labels: labels,
+                datasets: [
+                {% for year, value in raindata.items() %}
+                {
+                    label: '{{year}}',
+                    backgroundColor: '{{colours[year]}}',
+                    borderColor: '{{colours[year]}}',
+                    data: {{ value | tojson}},
+                },
+                {% endfor %}
+                ]
+            };
+     
+            const config = {
+                type: 'line',
+                data: data,
+                options: { maintainAspectRatio: false }
+            };
+     
+            const graph = new Chart(
+                document.getElementById('graph'),
+                config
+            );
+     
+        </script>
+    </body>
+</html>

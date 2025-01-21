@@ -30,8 +30,6 @@ class Year:
         
         try: avg = total/(length+1)
         except ZeroDivisionError: avg = 0
-        
-        print(self.json)
 
         self.json[month][0] = {
             "total": total, 
