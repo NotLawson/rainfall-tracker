@@ -37,7 +37,7 @@ def day(month, day):
 @app.route("/month/<month>")
 def month(month):
     data = current_year.data(month)
-    rainfall_data = current_year.json["month"]["1:"]
+    rainfall_data = current_year.json[month]["1:"]
 
     return render_template("month.html", data=data, rainfall_data=rainfall_data, month=month)
 
