@@ -5,7 +5,7 @@ cdir = os.path.dirname(os.path.realpath(__file__))
 class Year:
     def __init__(self, year):
         self.year = year
-        self.file = open(f"{cdir}/data/{year}.json", "wr")
+        self.file = open(f"{cdir}/data/{year}.json", "r+")
         self.json = json.load(self.file)
 
     def load(self):
