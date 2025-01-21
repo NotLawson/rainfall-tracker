@@ -1,5 +1,4 @@
 import json, os
-
 cdir = os.path.dirname(os.path.realpath(__file__)
 
 class Year:
