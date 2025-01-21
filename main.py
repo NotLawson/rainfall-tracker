@@ -23,12 +23,26 @@ def year_selector(request):
     else:
         return years[config["years"][0]], config["years"][0]
 
-@app.route("/")
+@app.route("/", methods = ["GET", "POST"])
 def index():
+    if request.method == "POST":
+        year = request.form.get("years")
+        if year in list(years.keys()):
+            
+            response = redirect("/")
+            response.set_cookie("year", year)
+            return response
     current_year, year_id = year_selector(request)
+
+    years_raindata = {}
+    colours = {}
+    for year in years.values():
+        raindata = [sum(year.json["01"][1:]), sum(year.json["02"][1:]), sum(year.json["03"][1:]), sum(year.json["04"][1:]), sum(year.json["05"][1:]), sum(year.json["06"][1:]), sum(year.json["07"][1:]), sum(year.json["08"][1:]), sum(year.json["09"][1:]), sum(year.json["10"][1:]), sum(year.json["11"][1:]), sum(year.json["12"][1:])]
+        years_raindata.update({year.year:raindata})
+        colours.update({year.year: f"rgb({random.randint(0,255)}, {random.randint(0,255)}, {random.randint(0,255)})"})
+
     labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    data = [current_year.data("01")["total"],current_year.data("02")["total"],current_year.data("03")["total"],current_year.data("04")["total"],current_year.data("05")["total"],current_year.data("06")["total"],current_year.data("07")["total"],current_year.data("08")["total"],current_year.data("09")["total"],current_year.data("10")["total"],current_year.data("11")["total"],current_year.data("12")["total"]]
-    return render_template("index.html", year=current_year, labels=labels, data=data, year_id=year_id)
+    return render_template("index.html", year=current_year, labels=labels, year_id=year_id, years=years, raindata=years_raindata, colours=colours)
 
 @app.route("/day/<month>/<day>", methods = ["GET", "POST"])
 def day(month, day):
@@ -71,27 +85,5 @@ def load():
     current_year.load()
     return "Database Changes Loaded"
 
-@app.route("/year", methods = ["GET", "POST"])
-def year():
-    if request.method == "POST":
-        year = request.form.get("years")
-        if year in list(years.keys()):
-            
-            response = redirect("/")
-            response.set_cookie("year", year)
-            return response
-    
-    years_raindata = {}
-    colours = {}
-    for year in years.values():
-        raindata = [sum(year.json["01"][1:]), sum(year.json["02"][1:]), sum(year.json["03"][1:]), sum(year.json["04"][1:]), sum(year.json["05"][1:]), sum(year.json["06"][1:]), sum(year.json["07"][1:]), sum(year.json["08"][1:]), sum(year.json["09"][1:]), sum(year.json["10"][1:]), sum(year.json["11"][1:]), sum(year.json["12"][1:])]
-        years_raindata.update({year.year:raindata})
-        colours.update({year.year: f"rgb({random.randint(0,255)}, {random.randint(0,255)}, {random.randint(0,255)})"})
-
-    labels = ["Jan", "Feb", "Mar", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        
-
-    return render_template("year.html", years=years, raindata=years_raindata, labels=labels, colours=colours)
-    
 
 app.run("0.0.0.0", "8080", debug=True)

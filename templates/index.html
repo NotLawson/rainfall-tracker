@@ -7,7 +7,18 @@
     </head>
     <body>
         <h1>Rainfall Tracker</h1>
-        <h2>{{year_id}} - <a href="/year">Change year</a></h2>
+        <form method="POST">
+            <select name="years">
+            {% for year_l in years.keys() %}
+                {% if year_l == year.year %}
+                <option value="{{year_l}}" selected>{{year_l}}</option>
+                {% else %}
+                <option value="{{year_l}}">{{year_l}}</option>
+                {% endif %}
+            {% endfor %}
+            </select>
+            <input type="submit" value="Select">
+        </form>
         <ul>
             <li><a href="/month/01">Jan</a> (Total: {{year.data("01")["total"]}})</li>
             <li><a href="/month/02">Feb</a> (Total: {{year.data("02")["total"]}})</li>
@@ -23,29 +34,33 @@
             <li><a href="/month/12">Dec</a> (Total: {{year.data("12")["total"]}})</li>
         </ul>
         <div style="height: 50vh; width: 100%;">
-            <canvas id="yeargraph"></canvas>
+            <canvas id="graph"></canvas>
         </div>
         <script>
-            const yearlabels = {{ labels | tojson}};
+            const labels = {{ labels | tojson}};
      
-            const yeardata = {
-                labels: yearlabels,
-                datasets: [{
-                    label: 'Rainfall this Year',
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: {{ data | tojson}},
-                }]
+            const data = {
+                labels: labels,
+                datasets: [
+                {% for year, value in raindata.items() %}
+                {
+                    label: '{{year}}',
+                    backgroundColor: '{{colours[year]}}',
+                    borderColor: '{{colours[year]}}',
+                    data: {{ value | tojson}},
+                },
+                {% endfor %}
+                ]
             };
      
             const config = {
                 type: 'line',
-                data: yeardata,
+                data: data,
                 options: { maintainAspectRatio: false }
             };
      
             const graph = new Chart(
-                document.getElementById('yeargraph'),
+                document.getElementById('graph'),
                 config
             );
      
