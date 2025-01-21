@@ -8,7 +8,7 @@
         <ol>
         {% for day in rainfall_data: %}
             <li><a href="/day/{{month}}/{{i}}">{{day}}</a></li>
-            {% set i+=1 %}
+            {% set i = i + 1 %}
         {% endfor %}
             <li><a href="/day/{{month}}/{{i}}"><i>Create</i></a></li>
     </body>
