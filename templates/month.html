@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <h1>Month {{month}}</h1>
+        <p>Total Rainfall: {{data["total"]}}</p><br>
+        <p>Average Rainfall: {{data["avg"]}}</p><br>
+
+        {% i = 1 %}
+        <ol>
+        {% for day in rainfall_data: %}
+            <li><a href="/day/{{month}}/{{i}}">{{day}}</a></li>
+            {% i+=1 %}
+        {% endfor %}
+            <li><a href="/day/{{month}}/{{i}}"><i>Create</i></a></li>
+    </body>
+</html>
