@@ -7,7 +7,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html", year=current_year)
+    labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    data = [current_year.data("01")["total"],current_year.data("02")["total"],current_year.data("03")["total"],current_year.data("04")["total"],current_year.data("05")["total"],current_year.data("06")["total"],current_year.data("07")["total"],current_year.data("08")["total"],current_year.data("09")["total"],current_year.data("10")["total"],current_year.data("11")["total"],current_year.data("12")["total"]]
+    return render_template("index.html", year=current_year, labels=labels, data=data)
 
 @app.route("/day/<month>/<day>", methods = ["GET", "POST"])
 def day(month, day):
