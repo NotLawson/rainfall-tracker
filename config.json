@@ -1,5 +1,4 @@
 {
     "port":8080,
-    "years":[
-    ]
+    "years":["example"]
 }

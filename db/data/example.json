@@ -1,5 +1,5 @@
 {
-    "year":"Example",
+    "year":"example",
     "hint":"For monthly rainfall collection, the first item (0) is data in the format of {'total':total,'avg':avg}. The rest of the items contain day rainfall",
     "hint2":"Duplicate this file to create a new year's data",
     "01":[{"total":0, "avg":"0"}],
