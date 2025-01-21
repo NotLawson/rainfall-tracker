@@ -1,0 +1,16 @@
+{
+    "year":"Example Year",
+    "hint":"For monthly rainfall collection, the first item (0) is data in the format of {'total':total,'avg':avg}. The rest of the items contain day rainfall",
+    "01":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "02":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "03":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "04":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "05":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "06":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "07":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "08":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "09":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "10":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "11":[{"total":0, "avg":"0"}, 0, 0, 0],
+    "12":[{"total":0, "avg":"0"}, 0, 0, 0]
+}
