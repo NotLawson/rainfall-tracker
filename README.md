@@ -14,7 +14,7 @@ It consists of 2 parts:
 
 ## Quick start
 
-> Want the run a demo? Go to the example branch to download some demo data
+> Want to run a demo? Go to the [example](https://github.com/NotLawson/rainfall-tracker/tree/example) branch to download some demo data
 
 Go to the latest [release](https://github.com/NotLawson/rainfall-tracker/releases) and download the source code.
 
