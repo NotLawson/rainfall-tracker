@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>Rainfall for {{data["day"]}}/{{data["month"]}}</title>
+    </head>
+    <body>
+        <h1>Rainfall for {{data["day"]}}/{{data["month"]}}</h1>
+        <form action="POST">
+            <input type="number" step="0.1" name="rainfall" value="{{data['rainfall']}}">
+        </form>
+    </body>
+</html>

@@ -1,12 +1,12 @@
 import json, os
 
-cdir = os.path.dirname(os.path.realpath(__file__))
+cdir = os.path.dirname(os.path.realpath(__file__))+"\\db"
 
 class Year:
     def __init__(self, year):
         self.year = year
         self.file = f"{cdir}/data/{year}.json"
-        self.json = json.load(self.file, "r")
+        self.json = json.load(open(self.file, "r"))
 
     def load(self):
         self.json = json.load(open(self.file, "r"))
@@ -22,15 +22,17 @@ class Year:
             self.json[month][day] = rainfall
         else: raise IndexError
 
-        days = self.json[month]
-        del days[0]
+        days = self.json[month][1:]
+
 
         total = 0
         for val in days:
             total += val
         
-        try: avg = total/length
+        try: avg = total/(length+1)
         except ZeroDivisionError: avg = 0
+        
+        print(self.json)
 
         self.json[month][0] = {
             "total": total, 

@@ -1,12 +1,40 @@
 from flask import Flask, render_template, request
+import db
 
+current_year = db.Year("2025")
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    pass
+    return 'Hello World'
 
-@app.route("/day/<year>/<month>/<day>", methods = ["GET", "POST"])
-def day(year, month, day):
-    pass
+@app.route("/day/<month>/<day>", methods = ["GET", "POST"])
+def day(month, day):
+    if request.method == "POST":
+        rainfall = float(request.form.get("rainfall"))
+        try:
+            current_year.put(month, int(day), rainfall)
+            return render_template("day.html", data = {
+                "day":day,
+                "month":month,
+                "rainfall":rainfall
+            })
+        except IndexError:
+            return render_template("day_not_found.html", data={
+                "day":day,
+                "month":month,
+            })
+    try: rainfall = current_year.get(month, int(day))
+    except IndexError:
+        return render_template("day_not_found.html", data={
+                "day":day,
+                "month":month,
+            })
+    return render_template("day.html", data={
+        "day":day,
+        "month":month,
+        "rainfall":rainfall
+    })
+
+app.run("0.0.0.0", "8080", debug=True)
