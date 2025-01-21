@@ -82,5 +82,26 @@ def load():
     current_year.load()
     return "Database Changes Loaded"
 
+@app.route("/mass/<month>/<day>", methods = ["GET", "POST"])
+def mass(month, day):
+    current_year, _ = year_selector(request)
+    if request.method == "POST":
+        rainfall = float(request.form.get("rainfall"))
+        try:
+            current_year.put(month, int(day), rainfall)
+            return redirect("/mass/"+month+str(int(day)+1))
+        except IndexError:
+            return render_template("day_not_found.html", data={
+                "day":day,
+                "month":month,
+            }, int=int)
+    try: rainfall = current_year.get(month, int(day))
+    except IndexError:
+        rainfall = 0
+    return render_template("day.html", data={
+        "day":day,
+        "month":month,
+        "rainfall":rainfall
+    })
 
 app.run("0.0.0.0", port, debug=True)
