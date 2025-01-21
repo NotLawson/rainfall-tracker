@@ -4,12 +4,12 @@ p, h1, h2, li {
 }
 a {
     font-family: sans-serif;
-    color: rgb(205, 205, 205)
+    color: rgb(255, 50, 50)
 }
 a:hover {
     font-family: sans-serif;
-    color:rgb(105, 105, 105)
+    color:rgb(205, 205, 205)
 }
 body {
-    background-color: rgb(117, 117, 117);
+    background-color: rgb(205, 205, 205);
 }
