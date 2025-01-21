@@ -48,4 +48,9 @@ def month(month):
 
     return render_template("month.html", data=data, rainfall_data=rainfall_data, month=month, labels=labels)
 
+@app.route("/load")
+def load():
+    current_year.load()
+    return "Database Changes Loaded"
+
 app.run("0.0.0.0", "8080", debug=True)
