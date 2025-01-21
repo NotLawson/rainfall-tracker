@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return 'Hello World'
+    return render_template("index.html", year=current_year)
 
 @app.route("/day/<month>/<day>", methods = ["GET", "POST"])
 def day(month, day):
