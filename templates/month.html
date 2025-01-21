@@ -2,6 +2,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="/static/css.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <title>Month {{month}}</title>
     </head>
     <body>
@@ -18,5 +19,33 @@
             <li><a href="/day/{{month}}/{{i.value}}"><i>Create</i></a></li>
         <br>
         <a href="/">Back</a>
+        <div style="height: 50vh; width: 50%;">
+            <canvas id="graph"></canvas>
+        </div>
+        <script>
+            const labels = {{ labels | tojson}};
+     
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Rainfall this month',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: {{ rainfall_data | tojson}},
+                }]
+            };
+     
+            const config = {
+                type: 'line',
+                data: data,
+                options: { maintainAspectRatio: false }
+            };
+     
+            const graph = new Chart(
+                document.getElementById('graph'),
+                config
+            );
+     
+        </script>
     </body>
 </html>

@@ -38,7 +38,12 @@ def day(month, day):
 def month(month):
     data = current_year.data(month)
     rainfall_data = current_year.json[month][1:]
+    labels = []
+    i=1
+    for day in rainfall_data:
+        labels.append(str(i))
+        i+=1
 
-    return render_template("month.html", data=data, rainfall_data=rainfall_data, month=month)
+    return render_template("month.html", data=data, rainfall_data=rainfall_data, month=month, labels=labels)
 
 app.run("0.0.0.0", "8080", debug=True)
