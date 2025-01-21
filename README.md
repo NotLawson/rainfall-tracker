@@ -9,7 +9,7 @@ It consists of 2 parts:
 
 ## Quick start
 
-Go to the latest release and download the source code.
+Go to the latest [release](https://github.com/NotLawson/rainfall-tracker/releases) and download the source code.
 
 Install `flask` via `pip` (`pip install flask`)
 
